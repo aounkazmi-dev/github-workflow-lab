@@ -1,134 +1,158 @@
+# ⚙️ GitHub Automation Lab
 
-# 🌿 green-squares-bot
+> A hands-on project exploring scheduled GitHub Actions, Python automation, and automated Git workflows.
 
-> **A fun and educational GitHub Actions bot that automatically commits on weekdays to keep your contribution graph active.**
+## 💡 Overview
 
-![GitHub Workflow Status](https://img.shields.io/badge/GitHub%20Actions-Auto%20Commit%20Bot-brightgreen?logo=github)
+This project is a practical experiment with **GitHub Actions** and **Python-based automation**.
+
+It demonstrates how scheduled workflows can execute scripts, modify repository files, create commits, and synchronize changes back to GitHub automatically.
+
+The project is designed as a lightweight environment for learning:
+
+- GitHub Actions
+- Scheduled workflows with CRON
+- Python scripting
+- Git automation
+- Automated file updates
+- CI/CD workflow concepts
 
 ---
 
-## 💡 What is `green-squares-bot`?
+## ✨ Features
 
-Welcome to **green-squares-bot** — a simple yet creative bot that automatically generates commits to make your GitHub contribution graph colorful and active 🌱.
+- 🔁 **Scheduled Automation**  
+  GitHub Actions runs the automation workflow at predefined times.
 
-This is a **demo project** that showcases how you can use **GitHub Actions** to automate routine tasks, like generating commits on a schedule. It’s a great way to explore GitHub automation, scheduled workflows (via CRON), and Git operations — all within a lightweight and transparent project.
+- 🐍 **Python-Based Workflow**  
+  A Python script handles the repository update and commit logic.
 
----
+- 📅 **Scheduled Execution**  
+  Uses CRON schedules to trigger automated workflow runs.
 
-## ✨ Key Features
+- 📝 **Automated File Updates**  
+  The script updates selected repository files during execution.
 
-- 🔁 **Automated Commits on 3–5 Random Days per Week**  
-  Each week, the bot picks 3 to 5 random days (including weekends) to commit.
+- 🔄 **Automated Git Operations**  
+  Changes are staged, committed, synchronized, and pushed automatically.
 
-- 🔢 **Multiple Commits per Day**  
-  Generates between **3 to 15 commits** on each commit day, with natural variation.
-
-- 🕒 **Runs Three Times Daily**  
-  Scheduled runs spread throughout the day (Morning, Afternoon, Evening) to simulate organic activity.
-
-- 🧠 **Human-like Commit Messages and Quotes**  
-  Uses randomly selected inspirational quotes and emojis to simulate real development habits.
-
-- 📜 **Commit History Logging**  
-  Logs all commits in `commit_log.txt` for transparency and tracking.
-
-- 🧪 **Educational Use Only**  
-  Designed as a learning tool for GitHub Actions, automation, and CI/CD workflows.
+- 📊 **Execution Tracking**  
+  Local tracking files record automation activity and execution state.
 
 ---
 
 ## ⚙️ How It Works
 
-This project uses a `commit.py` Python script executed through a scheduled GitHub Actions workflow (`.github/workflows/activity.yml`).
+The project uses a Python script executed through a GitHub Actions workflow.
 
-The workflow runs daily at three times:
+### Workflow
 
-- 🌅 **Morning:** `06:00 UTC` (11:30 AM IST)  
-- 🌞 **Afternoon:** `12:00 UTC` (5:30 PM IST)  
-- 🌙 **Evening:** `15:45 UTC` (9:15 PM IST)  
+```text
+Scheduled GitHub Actions Trigger
+            ↓
+     Checkout Repository
+            ↓
+       Setup Environment
+            ↓
+        Run commit.py
+            ↓
+      Update Repository Files
+            ↓
+        Create Commits
+            ↓
+       Pull Latest Changes
+            ↓
+          Push Changes
+```
 
-Each run performs:
+The workflow is defined in:
 
-1. 🧾 Git checkout  
-2. ⚙️ Git identity setup  
-3. 🎲 Weekly randomization of 3–5 commit days  
-4. ✍️ Running `commit.py` to generate 3–15 commits on commit days  
-5. 🗂️ Updating random files with quotes and messages  
-6. 🔄 Pull latest changes with rebase  
-7. 📤 Push commits if ahead  
+```text
+.github/workflows/activity.yml
+```
+
+The main automation logic is implemented in:
+
+```text
+commit.py
+```
+
+---
+
+## 🗂️ Project Structure
+
+```text
+github-automation-lab/
+├── commit.py
+├── daily_log.txt
+├── progress.md
+├── inspiration.txt
+├── commit_log.txt
+├── .commit_tracker.json
+└── .github/
+    └── workflows/
+        └── activity.yml
+```
 
 ---
 
 ## 🚀 Getting Started
 
-### Clone the repo:
+### Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/green-squares-bot.git
-cd green-squares-bot
+git clone https://github.com/YOUR_USERNAME/github-automation-lab.git
+cd github-automation-lab
 ```
 
-### Push to your own GitHub repository:
+### Enable GitHub Actions
 
-```bash
-git remote rename origin old-origin
-git remote add origin https://github.com/YOUR_USERNAME/green-squares-bot.git
-git push -u origin master
-```
+After pushing the project to your repository:
 
-Make sure the repository is **public** so commits show up on your GitHub profile contribution graph!
+1. Open the **Actions** tab.
+2. Select the automation workflow.
+3. Make sure workflows are enabled.
+4. Use **Run workflow** to manually test it.
+
+The workflow can also execute automatically according to its configured schedule.
 
 ---
 
-## 🔧 File Structure
+## 🧪 Learning Goals
 
-```
-green-squares-bot/
-├── commit.py             # Main commit generator script
-├── daily_log.txt         # Rotating dummy file
-├── progress.md           # Rotating dummy file
-├── inspiration.txt       # Rotating dummy file
-├── commit_log.txt        # Records commit history
-└── .github/
-    └── workflows/
-        └── activity.yml  # GitHub Actions workflow
-```
+This project was built to gain practical experience with:
+
+- GitHub Actions
+- CRON scheduling
+- Python automation
+- Git commands from scripts
+- Automated commits
+- Repository synchronization
+- CI/CD concepts
+- Workflow debugging
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! 🎉  
-If you have ideas for:
-- Better commit logic  
-- Cool new features  
-- Code cleanup or optimization  
+Ideas and improvements are welcome.
 
-Feel free to fork this repo and open a pull request.
+Potential improvements include:
 
----
-
-## ⚠️ **Disclaimer**
-
-> **This project is for educational and demonstration purposes only.**  
-> It is designed to show how GitHub Actions can be used for scheduled automation tasks — not for inflating contributions or misleading viewers.
-
-Automating your GitHub activity can be a **fun and informative** way to learn about CI/CD, bots, scripting, and workflows — but it's important to use this responsibly:
-
-- Be **transparent** in your usage  
-- Avoid **spammy or misleading behavior**  
-- Present it clearly as a **testbed for learning automation**
-
----
-
-🧪 Built for learning, not for production.  
-💚 Happy green squares!  
-📅 Automation starts from: `2025-07-01`
+- Better scheduling logic
+- More robust error handling
+- Improved logging
+- Additional automation tasks
+- Workflow optimization
 
 ---
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).  
-Feel free to use, modify, and distribute it for learning and personal projects.  
-See the full license in the [LICENSE](LICENSE) file.
+This project is licensed under the MIT License.
+
+See the `LICENSE` file for details.
+
+---
+
+> Built as a practical learning project for GitHub Actions and repository automation.
